@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">PlavarenZA</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="home_pool">Bazén</string>
+    <string name="home_sauna">Sauna</string>
+
+    <string name="day_today">"Dnes: "</string>
+    <string name="day_moday">Pondelok</string>
+    <string name="day_tuesday">Utorok</string>
+    <string name="day_wednesday">Streda</string>
+    <string name="day_thursday">Štvrtok</string>
+    <string name="day_friday">Piatok</string>
+    <string name="day_saturday">Sobota</string>
+    <string name="day_sunday">Nedela</string>
+
+    <string name="state_connection">Skontrolujte pripojenie na internet</string>
+    <string name="pool_empty">Zoznam prázdny, skontrolujte pripojenie.</string>
+
+    <string name="settings_caption">Nastavenia aplikácie</string>
+    <string name="settings_download">Nastavenia sťahovania</string>
+    <string name="settings_optAuto">Automatické</string>
+    <string name="settings_optManual">Manuálne</string>
+    <string name="settings_optManualText"> Sťahovanie programu plavárne sa vykoná len na poťiahnutie nadol</string>
+    <string name="settings_optAutoText"> Sčahovanie sa vykoná automaticky pri štarte aplikácie</string>
+
+    <string name="about_caption">O aplikácií</string>
+    <string name="about_version">Verzia</string>
+    <string name="about_text">Aplikácia stiahne a uloží program plávania krytej plavárne v Žiline.</string>
+
+    <string name="sauna_select">Zvolťe druh:</string>
+    <string name="sauna_women">Ženy</string>
+    <string name="sauna_men">Muži</string>
+    <string name="sauna_together">Spoločná</string>
+    <string name="sauna_week1">I.  Zóna 12:00-15:30</string>
+    <string name="sauna_week2">II. Zóna 16:00-20:00</string>
+    <string name="sauna_weekend1">I.  Zóna 11:00-14:30</string>
+    <string name="sauna_weekend2">II. Zóna 15:00-18:00</string>
+    <string name="sauna_weekend3">II. Zóna 09:00-20:00</string>
+    <string name="sauna_check_online">Pozrieť program online</string>
+
+</resources>
