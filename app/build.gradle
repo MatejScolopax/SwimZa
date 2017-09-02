@@ -7,7 +7,7 @@ android {
         applicationId "sk.plavaren.swim"
         minSdkVersion 14
         targetSdkVersion 25
-        versionCode 8
+        versionCode 9
         versionName "2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
