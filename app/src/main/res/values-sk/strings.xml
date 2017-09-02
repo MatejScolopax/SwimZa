@@ -12,7 +12,7 @@
     <string name="day_thursday">Štvrtok</string>
     <string name="day_friday">Piatok</string>
     <string name="day_saturday">Sobota</string>
-    <string name="day_sunday">Nedela</string>
+    <string name="day_sunday">Nedeľa</string>
 
     <string name="state_connection">Skontrolujte pripojenie na internet</string>
     <string name="pool_empty">Zoznam prázdny,\n skontrolujte pripojenie.</string>
@@ -21,14 +21,14 @@
     <string name="settings_download">Nastavenia sťahovania</string>
     <string name="settings_optAuto">Automatické</string>
     <string name="settings_optManual">Manuálne</string>
-    <string name="settings_optManualText"> Sťahovanie programu plavárne sa vykoná len na poťiahnutie nadol</string>
-    <string name="settings_optAutoText"> Sčahovanie sa vykoná automaticky pri štarte aplikácie</string>
+    <string name="settings_optManualText"> Sťahovanie programu plavárne sa vykoná len na potiahnutie nadol</string>
+    <string name="settings_optAutoText"> Sťahovanie sa vykoná automaticky pri štarte aplikácie</string>
 
     <string name="about_caption">O aplikácií</string>
     <string name="about_version">Verzia</string>
     <string name="about_text">Aplikácia stiahne a uloží program plávania krytej plavárne v Žiline.</string>
 
-    <string name="sauna_select">Zvolťe druh:</string>
+    <string name="sauna_select">Zvoľte druh:</string>
     <string name="sauna_women">Ženy</string>
     <string name="sauna_men">Muži</string>
     <string name="sauna_together">Spoločná</string>

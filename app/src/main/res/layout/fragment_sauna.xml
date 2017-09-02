@@ -51,7 +51,7 @@
                         android:id="@+id/radio_women"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:textColor="@color/darkgrey"
                         android:text="@string/sauna_women"
                         android:textSize="15sp" />
 
@@ -59,7 +59,7 @@
                         android:id="@+id/radio_men"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:textColor="@color/darkgrey"
                         android:text="@string/sauna_men"
                         android:textSize="15sp" />
 
@@ -67,7 +67,7 @@
                         android:id="@+id/radio_together"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:textColor="@color/darkgrey"
                         android:text="@string/sauna_together"
                         android:textSize="15sp" />
                 </RadioGroup>
