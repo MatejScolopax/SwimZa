@@ -13,7 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import scolopax.sk.swimza.R;
 
@@ -26,13 +26,13 @@ public class SettingsDialog extends Dialog {
 
     private Context context;
 
-    @Bind(R.id.btn_ok)
+    @BindView(R.id.btn_ok)
     Button btnOk;
-    @Bind(R.id.txt_settings_version)
+    @BindView(R.id.txt_settings_version)
     TextView txtVersion;
-    @Bind(R.id.radio_auto)
+    @BindView(R.id.radio_auto)
     RadioButton rbtnAuto;
-    @Bind(R.id.radio_manual)
+    @BindView(R.id.radio_manual)
     RadioButton rbtnManual;
 
     private static final String SHARED_DOWNLOAD = "SHARED_PREF_DOWNLOAD";
@@ -80,7 +80,7 @@ public class SettingsDialog extends Dialog {
                 if (rbtnAuto.isChecked()) {
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putBoolean(SHARED_IS_AUTO, true);
-                    editor.commit();
+                    editor.apply();
                 }
             }
         });
@@ -92,7 +92,7 @@ public class SettingsDialog extends Dialog {
                 if (rbtnManual.isChecked()) {
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putBoolean(SHARED_IS_AUTO, false);
-                    editor.commit();
+                    editor.apply();
                 }
             }
         });

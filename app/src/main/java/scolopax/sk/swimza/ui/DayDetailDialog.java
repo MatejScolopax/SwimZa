@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.widget.TextView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import scolopax.sk.swimza.R;
 import scolopax.sk.swimza.data.DataShare;
@@ -19,11 +19,12 @@ import scolopax.sk.swimza.data.DayObject;
 
 public class DayDetailDialog extends Dialog {
 
-    @Bind(R.id.lv_day_daySchedule)
+
+    @BindView(R.id.lv_day_daySchedule)
     TextView txtDaySchedule;
-    @Bind(R.id.lv_view_day_daySchedule_details)
+    @BindView(R.id.lv_view_day_daySchedule_details)
     TextView txtDayScheduleDetail;
-    @Bind(R.id.lv_day_eveningSchedule)
+    @BindView(R.id.lv_day_eveningSchedule)
     TextView txtEveningSchedule;
 
     private Context context;

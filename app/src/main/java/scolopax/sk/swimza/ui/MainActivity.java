@@ -2,7 +2,6 @@ package scolopax.sk.swimza.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,7 +12,7 @@ import android.view.View;
 
 import java.util.Date;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import scolopax.sk.swimza.R;
 import scolopax.sk.swimza.data.DataShare;
@@ -23,13 +22,13 @@ import scolopax.sk.swimza.data.DataShare;
  */
 
 public class MainActivity extends AppCompatActivity {
-    @Bind(R.id.tabs)
+    @BindView(R.id.tabs)
     TabLayout tabLayout;
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.viewpager)
+    @BindView(R.id.viewpager)
     ViewPager viewPager;
-    @Bind(R.id.toolbar_layout)
+    @BindView(R.id.toolbar_layout)
     View toolbarLayout;
 
     private HomePagerAdapter pagerAdapter;

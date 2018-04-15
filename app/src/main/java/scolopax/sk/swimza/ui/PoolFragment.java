@@ -4,8 +4,8 @@ package scolopax.sk.swimza.ui;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -55,9 +55,9 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
         View view = inflater.inflate(R.layout.fragment_pool, container, false);
         this.toolbarHeight = getResources().getDimensionPixelSize(R.dimen.toolbar_height);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_swim);
-        txtEmpty = (TextView) view.findViewById(R.id.txtEmpty);
-        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        recyclerView =  view.findViewById(R.id.recycler_view_swim);
+        txtEmpty =  view.findViewById(R.id.txtEmpty);
+        swipeContainer = view.findViewById(R.id.swipeContainer);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager cardLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(cardLayoutManager);
@@ -124,6 +124,7 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
         return cal.getTime();
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] projection = DatabaseContract.TableDay.getProjection();
