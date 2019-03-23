@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion rootProject.SdkVersionCompile
+    buildToolsVersion rootProject.buildTools
     defaultConfig {
-        applicationId "sk.plavaren.swim"
-        minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 10
-        versionName "2.0"
+        applicationId rootProject.applicationId
+        minSdkVersion rootProject.SdkVersionMin
+        targetSdkVersion rootProject.SdkVersionTarget
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -19,18 +19,4 @@ android {
     }
 }
 
-dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    api 'com.android.support:appcompat-v7:27.1.1'
-    api 'com.android.support.constraint:constraint-layout:1.1.0'
-    api 'com.android.support:design:27.1.1'
-    api 'com.android.support:recyclerview-v7:27.1.1'
-    api 'com.android.support:cardview-v7:27.1.1'
-    api group: 'org.jsoup', name: 'jsoup', version: '1.7.2'
-    testImplementation 'junit:junit:4.12'
-    api 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-}
+apply from: 'dependencies.gradle'
