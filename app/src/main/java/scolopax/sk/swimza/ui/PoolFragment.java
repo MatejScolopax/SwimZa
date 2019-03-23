@@ -22,6 +22,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Date;
 
+import butterknife.BindView;
 import scolopax.sk.swimza.R;
 import scolopax.sk.swimza.data.DatabaseContract;
 import scolopax.sk.swimza.data.DayObject;
@@ -35,16 +36,22 @@ import scolopax.sk.swimza.util.br_ConnectivityChange;
 
 public class PoolFragment extends ScrollingFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private RecyclerView recyclerView;
-    private TextView txtEmpty;
-    private SwipeRefreshLayout swipeContainer;
     private int toolbarHeight;
     private DayAdapter dayAdapter;
     private static final int DAY_LOADER_ID = 0;
 
+    @BindView(R.id.recycler_view_swim)
+    RecyclerView recyclerView;
+
+    @BindView(R.id.swipeContainer)
+    SwipeRefreshLayout swipeContainer;
+
+    @BindView(R.id.txtEmpty)
+    TextView txtEmpty;
+
     @Override
     public void scrollToTop() {
-        if (recyclerView != null){
+        if (recyclerView != null) {
             recyclerView.smoothScrollToPosition(0);
         }
     }
@@ -52,12 +59,14 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_pool, container, false);
+        return inflater.inflate(R.layout.fragment_pool, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         this.toolbarHeight = getResources().getDimensionPixelSize(R.dimen.toolbar_height);
 
-        recyclerView =  view.findViewById(R.id.recycler_view_swim);
-        txtEmpty =  view.findViewById(R.id.txtEmpty);
-        swipeContainer = view.findViewById(R.id.swipeContainer);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager cardLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(cardLayoutManager);
@@ -65,7 +74,7 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
         dayAdapter = new DayAdapter(new DayAdapter.DayAdapterOnClickHandler() {
             @Override
             public void onClick(Long id, DayObject dayObject) {
-                new DayDetailDialog(getContext(),dayObject);
+                new DayDetailDialog(getContext(), dayObject);
             }
         }, getContext());
 
@@ -87,7 +96,7 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
 
 
         swipeContainer.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorAccent, R.color.colorPrimaryDark);
-        swipeContainer.setProgressViewOffset(true, 0, toolbarHeight *2 + (toolbarHeight/10));
+        swipeContainer.setProgressViewOffset(true, 0, toolbarHeight * 2 + (toolbarHeight / 10));
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -103,8 +112,6 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
 
 
         getActivity().getSupportLoaderManager().initLoader(DAY_LOADER_ID, null, this);
-
-        return view;
     }
 
     @Override
@@ -146,9 +153,8 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
 
     }
 
-    private void updateEmptyVisibility()
-    {
-       txtEmpty.setVisibility(dayAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
+    private void updateEmptyVisibility() {
+        txtEmpty.setVisibility(dayAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
     }
 
     private class DownloadTask extends ParseHtmlTask {
@@ -164,7 +170,6 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
             if (swipeContainer != null) {
                 swipeContainer.setRefreshing(false);
             }
-
         }
     }
 

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import scolopax.sk.swimza.R;
 import scolopax.sk.swimza.data.DataShare;
 
@@ -25,11 +28,6 @@ import scolopax.sk.swimza.data.DataShare;
 
 public class SaunaFragment extends ScrollingFragment {
 
-    private TextView txtTuesday, txtWednesday, txtThursday, txtFriday, txtSaturday, txtSunday;
-    private RadioButton rbtnM, rbtnW, rbtnT;
-    private ScrollingView scrollView;
-    private Button btnOnline;
-
     private static final String SHARED_PREF_GENDER = "SHARED_PREF_GENDER";
     private static final String SHARED_GENDER = "SHARED_GENDER";
 
@@ -38,40 +36,63 @@ public class SaunaFragment extends ScrollingFragment {
     private static final int GENDER_MIX = 2;
     private int defaultGender = 2;
 
+    @BindView(R.id.v_sauna_tuesday)
+    TextView txtTuesday;
+
+    @BindView(R.id.v_sauna_wednesday)
+    TextView txtWednesday;
+
+    @BindView(R.id.v_sauna_thursday)
+    TextView txtThursday;
+
+    @BindView(R.id.v_sauna_friday)
+    TextView txtFriday;
+
+
+    @BindView(R.id.v_sauna_saturday)
+    TextView txtSaturday;
+
+    @BindView(R.id.v_sauna_sunday)
+    TextView txtSunday;
+
+    @BindView(R.id.scrollView_sauna)
+    ScrollingView scrollView;
+
+    @BindView(R.id.radio_men)
+    RadioButton rbtnM;
+
+    @BindView(R.id.radio_women)
+    RadioButton rbtnW;
+
+    @BindView(R.id.radio_together)
+    RadioButton rbtnT;
+
+    @BindView(R.id.btn_page)
+    Button btnOnline;
+
+
     @Override
     public void scrollToTop() {
-        if (scrollView != null){
-            scrollView.scrollTo(0,0);
+        if (scrollView != null) {
+            scrollView.scrollTo(0, 0);
         }
     }
 
     private ScrollingView.OnScrollChangedListener mOnScrollChangedListener = new ScrollingView.OnScrollChangedListener() {
         public void onScrollChanged(ScrollView who, int l, int t, int oldl, int oldt) {
-            Log.v("scroll", "sauna " + l + " " + t + " " + oldl + " " +oldt);
-            triggerScroll(t-oldt);
+            Log.v("scroll", "sauna " + l + " " + t + " " + oldl + " " + oldt);
+            triggerScroll(t - oldt);
         }
     };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_sauna, container, false);
+        return inflater.inflate(R.layout.fragment_sauna, container, false);
+    }
 
-        txtTuesday = (TextView) view.findViewById(R.id.v_sauna_tuesday);
-        txtWednesday = (TextView) view.findViewById(R.id.v_sauna_wednesday);
-        txtThursday = (TextView) view.findViewById(R.id.v_sauna_thursday);
-        txtFriday = (TextView) view.findViewById(R.id.v_sauna_friday);
-
-        scrollView = (ScrollingView)  view.findViewById(R.id.scrollView_sauna);
-
-        rbtnM = (RadioButton) view.findViewById(R.id.radio_men);
-        rbtnW = (RadioButton) view.findViewById(R.id.radio_women);
-        rbtnT = (RadioButton) view.findViewById(R.id.radio_together);
-
-        txtSaturday = (TextView) view.findViewById(R.id.v_sauna_saturday);
-        txtSunday = (TextView) view.findViewById(R.id.v_sauna_sunday);
-
-        btnOnline = (Button) view.findViewById(R.id.btn_page);
-
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         scrollView.setOnScrollChangedListener(mOnScrollChangedListener);
 
         btnOnline.setOnClickListener(new View.OnClickListener() {
@@ -119,12 +140,10 @@ public class SaunaFragment extends ScrollingFragment {
             setTogether();
             rbtnT.setChecked(true);
         }
-        return view;
     }
 
     @Override
     public void onPause() {
-
         SharedPreferences settings = getContext().getSharedPreferences(SHARED_PREF_GENDER, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putInt(SHARED_GENDER, defaultGender);

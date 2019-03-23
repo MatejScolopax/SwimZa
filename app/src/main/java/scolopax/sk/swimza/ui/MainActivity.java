@@ -16,18 +16,23 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import scolopax.sk.swimza.R;
 import scolopax.sk.swimza.data.DataShare;
+import scolopax.sk.swimza.ui.base.BaseActivity;
 
 /**
  * Created by scolopax on 08/08/2017.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
     @BindView(R.id.tabs)
     TabLayout tabLayout;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
     @BindView(R.id.viewpager)
     ViewPager viewPager;
+
     @BindView(R.id.toolbar_layout)
     View toolbarLayout;
 
@@ -40,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.toolbarHeight = getResources().getDimensionPixelSize(R.dimen.toolbar_height);
-        ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getString(R.string.day_today) + DataShare.dateFormat.format(new Date()));

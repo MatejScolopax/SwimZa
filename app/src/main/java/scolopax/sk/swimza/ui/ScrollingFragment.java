@@ -1,14 +1,14 @@
 package scolopax.sk.swimza.ui;
 
-import android.support.v4.app.Fragment;
-
 import java.util.LinkedList;
+
+import scolopax.sk.swimza.ui.base.BaseFragment;
 
 /**
  * Created by scolopax on 01/09/2017.
  */
 
-public abstract class ScrollingFragment extends Fragment {
+public abstract class ScrollingFragment extends BaseFragment {
 
     private final LinkedList<VerticalScrolling> listeners = new LinkedList<>();
 
