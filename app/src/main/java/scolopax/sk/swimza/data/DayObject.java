@@ -15,6 +15,7 @@ import java.util.Date;
  * 18.00-20.30 vecerne plavanie  //eveningTime
  */
 public class DayObject {
+
     public Date date;
     public String daytime;
     public String eveningTime;

@@ -56,4 +56,11 @@ public class DateUtils {
         return cal.getTime();
     }
 
+    public static Date getFutureDate(int days) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(Calendar.DATE, days);
+        return cal.getTime();
+    }
+
 }

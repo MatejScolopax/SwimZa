@@ -11,11 +11,13 @@ import android.provider.BaseColumns;
 public class DatabaseContract {
 
     /* Database schema information */
+
     public static final String TABLE_DAY = "table_day";
     public static final String CONTENT_AUTHORITY_DAY = "plavaren.sk.plavarenza2";
 
 
     /*  Customers  */
+
     public static final class TableDay implements BaseColumns
     {
         public static final String COL_DAY_DATE = "day_date";

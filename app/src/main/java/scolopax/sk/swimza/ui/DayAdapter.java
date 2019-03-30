@@ -22,7 +22,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
 
 
     private static final int VIEW_TYPE_DAY = 0;
-    private static final int VIEW_TYPE_SPACER = 1; // view that is "invisible" and fills space behind toobar and tabhost
+    private static final int VIEW_TYPE_SPACER = 1; // view that is "invisible" and fills space behind toolbar and tabhost
 
     private Cursor cursor;
     private Context context;
@@ -52,7 +52,6 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
     @Override
     public DayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (parent instanceof RecyclerView) {
-            int layoutId = -1;
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_day, parent, false);
             view.setFocusable(true);
             return new DayViewHolder(view);

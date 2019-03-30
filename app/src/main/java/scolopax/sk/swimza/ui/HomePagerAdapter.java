@@ -23,8 +23,8 @@ final class HomePagerAdapter extends FragmentPagerAdapter implements ScrollingFr
 	private int toolbarHeight;
 	private ScrollingFragment[] fragmentsArr;
 
-	private static final int PAGE_POOL = 0;
-	private static final int PAGE_SAUNA = 1;
+	public static final int PAGE_POOL = 0;
+	public static final int PAGE_SAUNA = 1;
 
 	private Context context;
 

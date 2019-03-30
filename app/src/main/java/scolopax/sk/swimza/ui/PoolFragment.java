@@ -19,13 +19,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+
 import butterknife.BindView;
 import scolopax.sk.swimza.R;
 import scolopax.sk.swimza.data.DatabaseContract;
 import scolopax.sk.swimza.data.DayObject;
 import scolopax.sk.swimza.data.ParseHtmlTask;
 import scolopax.sk.swimza.util.DateUtils;
-import scolopax.sk.swimza.util.br_ConnectivityChange;
+import scolopax.sk.swimza.util.ConnectUtils;
 
 
 /**
@@ -37,6 +39,7 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
     private int toolbarHeight;
     private DayAdapter dayAdapter;
     private static final int DAY_LOADER_ID = 0;
+    private boolean isScrollTrigered = true;
 
     @BindView(R.id.recycler_view_swim)
     RecyclerView recyclerView;
@@ -87,8 +90,10 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                triggerScroll(dy);
-                Log.v("scroll", "pool " + dy);
+                if (isScrollTrigered) {
+                    triggerScroll(dy);
+                    Log.v("scroll", "pool " + dy);
+                }
             }
         });
 
@@ -98,7 +103,7 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
             @Override
             public void onRefresh() {
 
-                if (br_ConnectivityChange.isConnected(getActivity())) {
+                if (ConnectUtils.isConnected(getActivity())) {
                     new DownloadTask(getActivity()).execute();
                 } else {
                     swipeContainer.setRefreshing(false);
@@ -113,7 +118,9 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
     @Override
     public void onResume() {
         super.onResume();
-        if (SettingsDialog.isDownloadAutomatic(getContext())) {
+
+        // if there is connection and user preference, download actual schedule
+        if (ConnectUtils.isConnected(getActivity()) && SettingsDialog.isDownloadAutomatic(getContext())) {
             new PoolFragment.DownloadTask(getActivity()).execute();
         }
     }
@@ -131,6 +138,39 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
         dayAdapter.refreshCursor(data);
         updateEmptyVisibility();
+
+        //if there is no connection, user might have already downloaded schedule, so scroll for him to actual date
+        if (!ConnectUtils.isConnected(getActivity())) {
+            int pastDays = getPastDaysCount();
+            if (pastDays-1 > 0) {
+
+                isScrollTrigered = false;
+
+                //scroll to actual day
+                recyclerView.scrollToPosition(pastDays-1);
+                //fix toolbar and tabhost overlap
+                recyclerView.scrollBy(0, -2 * getResources().getDimensionPixelSize(R.dimen.toolbar_height));
+
+                isScrollTrigered = true;
+            }
+        }
+    }
+
+
+    /**
+     *
+     * @return count of stored past day-schedules
+     */
+    private int getPastDaysCount() {
+
+        Cursor cursor = getActivity().getContentResolver().query(DatabaseContract.TableDay.CONTENT_URI, DatabaseContract.TableDay.getProjection(),
+                DatabaseContract.TableDay.COL_DAY_DATE + " <= " + new Date().getTime(), null, null);
+
+        if (cursor != null) {
+            return cursor.getCount();
+        }
+
+        return 0;
     }
 
     @Override

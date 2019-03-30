@@ -21,8 +21,8 @@ public class SwimDayProvider extends ContentProvider {
     private static final int SWIMDAY_WITH_ID = 201;
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-    static
-    {
+
+    static {
         sUriMatcher.addURI(DatabaseContract.CONTENT_AUTHORITY_DAY, DatabaseContract.TABLE_DAY, SWIMDAY);
 
         sUriMatcher.addURI(DatabaseContract.CONTENT_AUTHORITY_DAY, DatabaseContract.TABLE_DAY + "/#", SWIMDAY_WITH_ID);
@@ -43,10 +43,8 @@ public class SwimDayProvider extends ContentProvider {
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(DatabaseContract.TABLE_DAY);
 
-        switch (sUriMatcher.match(uri))
-        {
-            case SWIMDAY:
-            {
+        switch (sUriMatcher.match(uri)) {
+            case SWIMDAY: {
                 break;
             }
             case SWIMDAY_WITH_ID: {
@@ -77,8 +75,7 @@ public class SwimDayProvider extends ContentProvider {
         Uri returnUri;
 
         switch (sUriMatcher.match(uri)) {
-            case SWIMDAY:
-            {
+            case SWIMDAY: {
                 long id = db.insert(DatabaseContract.TABLE_DAY, null, contentValues);
                 returnUri = DatabaseContract.TableDay.buildDayUri(id);
                 break;
@@ -102,13 +99,10 @@ public class SwimDayProvider extends ContentProvider {
                 break;
             case SWIMDAY_WITH_ID:
                 String id = uri.getLastPathSegment();
-                if (TextUtils.isEmpty(selection))
-                {
+                if (TextUtils.isEmpty(selection)) {
                     rowsDeleted = db.delete(DatabaseContract.TABLE_DAY, DatabaseContract.TableDay.COL_DAY_DATE + "=" + id, null);
-                }
-                else
-                {
-                    rowsDeleted = db.delete( DatabaseContract.TABLE_DAY, DatabaseContract.TableDay.COL_DAY_DATE + "=" + id + " and " + selection, selectionArgs);
+                } else {
+                    rowsDeleted = db.delete(DatabaseContract.TABLE_DAY, DatabaseContract.TableDay.COL_DAY_DATE + "=" + id + " and " + selection, selectionArgs);
                 }
                 break;
             default:
