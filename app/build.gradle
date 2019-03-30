@@ -1,8 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
+
     compileSdkVersion rootProject.SdkVersionCompile
     buildToolsVersion rootProject.buildTools
+
     defaultConfig {
         applicationId rootProject.applicationId
         minSdkVersion rootProject.SdkVersionMin
@@ -11,6 +13,7 @@ android {
         versionName rootProject.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled true

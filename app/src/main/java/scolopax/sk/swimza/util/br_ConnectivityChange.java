@@ -89,5 +89,4 @@ public class br_ConnectivityChange extends BroadcastReceiver {
             super.onPreExecute();
         }
     }
-
 }

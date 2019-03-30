@@ -23,8 +23,8 @@ final class HomePagerAdapter extends FragmentPagerAdapter implements ScrollingFr
 	private int toolbarHeight;
 	private ScrollingFragment[] fragmentsArr;
 
-	static final int PAGE_POOL = 0;
-	static final int PAGE_SAUNA = 1;
+	private static final int PAGE_POOL = 0;
+	private static final int PAGE_SAUNA = 1;
 
 	private Context context;
 
@@ -39,20 +39,9 @@ final class HomePagerAdapter extends FragmentPagerAdapter implements ScrollingFr
 		this.fragmentsArr = new ScrollingFragment[] {new PoolFragment().addListener(this), new SaunaFragment().addListener(this)};
 	}
 
-
-
 	@Override
 	public ScrollingFragment getItem(int position) {
-//		switch (position) {
-//			case PAGE_POOL:
-//				return new PoolFragment().addListener(this);
-//			case PAGE_SAUNA:
-//				return new SaunaFragment().addListener(this);
-//		}
-
 		return fragmentsArr[position];
-
-		//return null;
 	}
 
 	@Override

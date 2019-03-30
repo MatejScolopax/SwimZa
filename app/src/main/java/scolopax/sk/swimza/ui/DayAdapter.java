@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import scolopax.sk.swimza.R;
-import scolopax.sk.swimza.data.DataShare;
 import scolopax.sk.swimza.data.DatabaseContract;
 import scolopax.sk.swimza.data.DayObject;
+import scolopax.sk.swimza.util.DateUtils;
 
 
 /**
@@ -68,8 +68,8 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
         holder.container.setVisibility(getItemViewType(position) == VIEW_TYPE_SPACER ? View.VISIBLE : View.GONE);
         DayObject day = getItem(position);
 
-        holder.txtDate.setText(DataShare.dateFormat.format(day.date));
-        holder.txtDayName.setText(DataShare.getDateName(day.date, context));
+        holder.txtDate.setText(DateUtils.dateFormat.format(day.date));
+        holder.txtDayName.setText(DateUtils.getDateName(day.date, context));
 
 
         if (day.daytime != null && day.daytime.length() > 0) {
@@ -108,11 +108,11 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
         public DayViewHolder(View view) {
             super(view);
             container = view.findViewById(R.id.container);
-            txtDate = (TextView) view.findViewById(R.id.lv_day_date);
-            txtDayName = (TextView) view.findViewById(R.id.lv_day_dateText);
-            txtDaySchedule = (TextView) view.findViewById(R.id.lv_day_daySchedule);
-            txtDayScheduleDetail = (TextView) view.findViewById(R.id.lv_view_day_daySchedule_details);
-            txtEveningSchedule = (TextView) view.findViewById(R.id.lv_day_eveningSchedule);
+            txtDate =  view.findViewById(R.id.lv_day_date);
+            txtDayName = view.findViewById(R.id.lv_day_dateText);
+            txtDaySchedule = view.findViewById(R.id.lv_day_daySchedule);
+            txtDayScheduleDetail = view.findViewById(R.id.lv_view_day_daySchedule_details);
+            txtEveningSchedule = view.findViewById(R.id.lv_day_eveningSchedule);
             view.setOnClickListener(this);
         }
 

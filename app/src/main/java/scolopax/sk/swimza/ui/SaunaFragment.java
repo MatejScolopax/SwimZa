@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import scolopax.sk.swimza.R;
-import scolopax.sk.swimza.data.DataShare;
+import scolopax.sk.swimza.data.Cons;
 
 
 /**
@@ -98,7 +98,7 @@ public class SaunaFragment extends ScrollingFragment {
         btnOnline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(DataShare.URL_SAUNA)));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Cons.URL_SAUNA)));
             }
         });
 
@@ -147,7 +147,7 @@ public class SaunaFragment extends ScrollingFragment {
         SharedPreferences settings = getContext().getSharedPreferences(SHARED_PREF_GENDER, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putInt(SHARED_GENDER, defaultGender);
-        editor.commit();
+        editor.apply();
         super.onPause();
     }
 

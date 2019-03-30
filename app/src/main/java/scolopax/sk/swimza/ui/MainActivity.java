@@ -3,7 +3,6 @@ package scolopax.sk.swimza.ui;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -13,10 +12,9 @@ import android.view.View;
 import java.util.Date;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import scolopax.sk.swimza.R;
-import scolopax.sk.swimza.data.DataShare;
 import scolopax.sk.swimza.ui.base.BaseActivity;
+import scolopax.sk.swimza.util.DateUtils;
 
 /**
  * Created by scolopax on 08/08/2017.
@@ -45,13 +43,8 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.toolbarHeight = getResources().getDimensionPixelSize(R.dimen.toolbar_height);
-
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getString(R.string.day_today) + DataShare.dateFormat.format(new Date()));
-
-//        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show();
-
+        getSupportActionBar().setTitle(getString(R.string.day_today) + DateUtils.dateFormat.format(new Date()));
         setUpPages();
     }
 
@@ -70,9 +63,9 @@ public class MainActivity extends BaseActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 Log.v("tab", tab.getPosition() + "");
                 if (tab.getPosition() == HomePagerAdapter.PAGE_POOL) {
-                    getSupportActionBar().setTitle(getString(R.string.day_today) + DataShare.dateFormat.format(new Date()));
+                    getSupportActionBar().setTitle(getString(R.string.day_today) + DateUtils.dateFormat.format(new Date()));
                 } else {
-                    getSupportActionBar().setTitle(getString(R.string.day_today) + DataShare.getDateName(new Date(), MainActivity.this));
+                    getSupportActionBar().setTitle(getString(R.string.day_today) + DateUtils.getDateName(new Date(), MainActivity.this));
                 }
 
             }

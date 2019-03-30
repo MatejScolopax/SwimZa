@@ -19,14 +19,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import butterknife.BindView;
 import scolopax.sk.swimza.R;
 import scolopax.sk.swimza.data.DatabaseContract;
 import scolopax.sk.swimza.data.DayObject;
 import scolopax.sk.swimza.data.ParseHtmlTask;
+import scolopax.sk.swimza.util.DateUtils;
 import scolopax.sk.swimza.util.br_ConnectivityChange;
 
 
@@ -94,7 +92,6 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
             }
         });
 
-
         swipeContainer.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorAccent, R.color.colorPrimaryDark);
         swipeContainer.setProgressViewOffset(true, 0, toolbarHeight * 2 + (toolbarHeight / 10));
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -110,7 +107,6 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
             }
         });
 
-
         getActivity().getSupportLoaderManager().initLoader(DAY_LOADER_ID, null, this);
     }
 
@@ -122,26 +118,17 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
         }
     }
 
-    public static Date getYesterdayDate() {
-
-        // I need day from today, so for comparison set one day ago (I'm comparing miliseconds)
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Date());
-        cal.add(Calendar.DATE, -1);
-        return cal.getTime();
-    }
-
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] projection = DatabaseContract.TableDay.getProjection();
         String order = DatabaseContract.TableDay.COL_DAY_DATE + " ASC ";
-        String where = DatabaseContract.TableDay.COL_DAY_DATE + "  >= " + getYesterdayDate().getTime();
+        String where = DatabaseContract.TableDay.COL_DAY_DATE + "  == " + DateUtils.getYesterdayDate().getTime();   // I need day from today, so for comparison set one day ago (I'm comparing milliseconds)
         return new CursorLoader(getContext(), DatabaseContract.TableDay.CONTENT_URI, projection, null, null, order);
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
         dayAdapter.refreshCursor(data);
         updateEmptyVisibility();
     }
@@ -150,7 +137,6 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
     public void onLoaderReset(Loader<Cursor> loader) {
         dayAdapter.refreshCursor(null);
         updateEmptyVisibility();
-
     }
 
     private void updateEmptyVisibility() {
@@ -172,5 +158,4 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
             }
         }
     }
-
 }

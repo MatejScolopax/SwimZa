@@ -33,7 +33,7 @@ public abstract class ParseHtmlTask extends AsyncTask<Void, Void, Boolean> {
         List<DayObject> result = null;
 
         try {
-            URL url = new URL(DataShare.URL);
+            URL url = new URL(Cons.URL);
             result = DayParser.parsePage(url);
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,9 +61,9 @@ public abstract class ParseHtmlTask extends AsyncTask<Void, Void, Boolean> {
                 int deleted = resolver.delete(DatabaseContract.TableDay.CONTENT_URI, null, null);
                 Log.v(TAG, " deleted = " + deleted);
 
-
                 int inserted = resolver.bulkInsert(DatabaseContract.TableDay.CONTENT_URI, valuesArr);
                 Log.v(TAG, " inserted = " + inserted);
+
             } else {
                 Log.v(TAG, "nothing downloaded, nothing to do");
             }
@@ -71,6 +71,4 @@ public abstract class ParseHtmlTask extends AsyncTask<Void, Void, Boolean> {
         }
         return false;
     }
-
-
 }

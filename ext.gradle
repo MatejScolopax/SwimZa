@@ -1,8 +1,8 @@
 // build
 ext.buildTools = '28.0.3'
 ext.SdkVersionMin = 14
-ext.SdkVersionTarget = 27
-ext.SdkVersionCompile = 27
+ext.SdkVersionTarget = 28
+ext.SdkVersionCompile = 28
 ext.applicationId = 'sk.plavaren.swim'
 ext.versionName = '2.0.0'
 ext.versionCode = 10

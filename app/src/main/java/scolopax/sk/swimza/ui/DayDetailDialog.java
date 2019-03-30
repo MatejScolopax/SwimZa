@@ -9,8 +9,8 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import scolopax.sk.swimza.R;
-import scolopax.sk.swimza.data.DataShare;
 import scolopax.sk.swimza.data.DayObject;
+import scolopax.sk.swimza.util.DateUtils;
 
 
 /**
@@ -22,8 +22,10 @@ public class DayDetailDialog extends Dialog {
 
     @BindView(R.id.lv_day_daySchedule)
     TextView txtDaySchedule;
+
     @BindView(R.id.lv_view_day_daySchedule_details)
     TextView txtDayScheduleDetail;
+
     @BindView(R.id.lv_day_eveningSchedule)
     TextView txtEveningSchedule;
 
@@ -43,7 +45,7 @@ public class DayDetailDialog extends Dialog {
         setContentView(R.layout.dialog_daydetail);
         ButterKnife.bind(this);
 
-        this.setTitle(DataShare.getDateName(dayObject.date, context) + " - " + DataShare.dateFormat.format(dayObject.date));
+        this.setTitle(DateUtils.getDateName(dayObject.date, context) + " - " + DateUtils.dateFormat.format(dayObject.date));
 
         txtDaySchedule.setText(dayObject.daytime);
         txtEveningSchedule.setText(dayObject.eveningTime);

@@ -16,13 +16,14 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import scolopax.sk.swimza.R;
+import scolopax.sk.swimza.ui.base.BaseDialog;
 
 
 /**
  * Created by scolopax on 13/08/2017.
  */
 
-public class SettingsDialog extends Dialog {
+public class SettingsDialog extends BaseDialog {
 
     private Context context;
 
@@ -55,8 +56,6 @@ public class SettingsDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_settings);
-
-        ButterKnife.bind(this);
 
         try {
             PackageInfo pInfo = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0);
