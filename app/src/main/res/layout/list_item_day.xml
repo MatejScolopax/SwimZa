@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    tools:background="@color/darkgrey">
 
     <View
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="112dip"/>
+        android:layout_height="112dip"
+        android:visibility="gone" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        style="@style/container"
         android:layout_marginTop="5dp"
-        android:background="@drawable/rounded_corners"
+        android:layout_marginBottom="5dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="vertical">
 
@@ -25,72 +23,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal" >
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/lv_day_date"
+                style="@style/h1"
+                tools:text="29.11.2013" />
 
-        <TextView
-            android:id="@+id/lv_day_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="29.11.2013"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/lv_day_dateText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Monday"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/darkgrey"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/lv_day_dateText"
+                style="@style/h2"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/darkgrey"
+                tools:text="Monday" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corners"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            style="@style/container"
             android:layout_marginTop="10dp"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/lv_day_daySchedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/h2"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="6:00-17:00"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                tools:text="6:00-17:00" />
 
             <TextView
                 android:id="@+id/lv_view_day_daySchedule_details"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="vertical" />
-
-            <TextView
-                android:id="@+id/lv_day_eveningSchedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
-                android:text="18:00-20:30 vecerne plavainie"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                tools:text="(09.00-10.30 6 dr.,15.00-17.00 7 dr.,17.00-18.00 6 dr.,)" />
+
+            <TextView
+                android:id="@+id/lv_day_eveningSchedule"
+                style="@style/h2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                tools:text="18:00-20:30 vecerne plavainie" />
         </LinearLayout>
     </LinearLayout>
 

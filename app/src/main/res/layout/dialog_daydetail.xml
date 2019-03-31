@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:minWidth="1000dp"
+    android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:layout_marginLeft="20dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/detail_dialog_caption"
+            style="@style/h1"
+            android:paddingBottom="15dp"
+            tools:text="Wednesday - 03.03.2018" />
+
+        <TextView
+            android:id="@+id/lv_day_daySchedule"
+            style="@style/h2"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical" >
+            tools:text="6:00-17:00" />
 
-            <TextView
-                android:id="@+id/lv_day_daySchedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="10dp"
-                android:text="6:00-17:00"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/lv_view_day_daySchedule_details"
+            style="@style/label"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="2dp"
+            android:orientation="vertical"
+            tools:text="(06.00-07.00 6 dr.,07.00-07.30 7 dr.,07.30-08.00 6 dr.,08.00-09.00
+7 dr.,/šírka 09.00-09.30 3,5 dr.,/šírka 09.30-10.00 6,5 dr.,/šírka
+10.00-11.00 9 dr.,/šírka 11.00-12.00 6,5 dr.,/šírka 13.00-14.00 8 dr.,/
+/šírka 14.00-15.00 6 dr.,/šírka)" />
 
-            <TextView
-                android:id="@+id/lv_view_day_daySchedule_details"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="2dp"
-                android:textSize="16sp"
-                android:orientation="vertical" />
-
-            <TextView
-                android:id="@+id/lv_day_eveningSchedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="15dp"
-                android:text="18:00-20:30 vecerne plavainie"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/lv_day_eveningSchedule"
+            style="@style/h2"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            tools:text="18:00-20:30 vecerne plavainie" />
+    </LinearLayout>
 
 </LinearLayout>

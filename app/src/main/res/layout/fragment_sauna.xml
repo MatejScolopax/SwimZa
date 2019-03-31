@@ -1,394 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<scolopax.sk.swimza.ui.ScrollingView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<scolopax.sk.swimza.ui.ScrollingView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView_sauna"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_sauna" >
+    android:background="@drawable/bg_sauna">
 
     <LinearLayout
-        android:paddingTop="@dimen/toolbar_double_height"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingTop="@dimen/toolbar_double_height">
 
         <LinearLayout
-
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rounded_corners"
-            android:orientation="vertical" >
+            style="@style/container"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                style="@style/container"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rounded_corners"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/h2"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
                     android:text="@string/sauna_select"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/darkgrey" />
 
                 <RadioGroup
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/radio_women"
+                        style="@style/label"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/darkgrey"
-                        android:text="@string/sauna_women"
-                        android:textSize="15sp" />
+                        android:text="@string/sauna_women" />
 
                     <RadioButton
                         android:id="@+id/radio_men"
+                        style="@style/label"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/darkgrey"
-                        android:text="@string/sauna_men"
-                        android:textSize="15sp" />
+                        android:text="@string/sauna_men" />
 
                     <RadioButton
                         android:id="@+id/radio_together"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/darkgrey"
-                        android:text="@string/sauna_together"
-                        android:textSize="15sp" />
+                        style="@style/label"
+                        android:text="@string/sauna_together" />
                 </RadioGroup>
             </LinearLayout>
 
             <!-- pondelok -->
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/rounded_corners"
-                android:orientation="horizontal" >
+                style="@style/container"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/day_moday"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3"
+                        android:text="@string/day_moday" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/v_sauna_monday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3" />
                 </LinearLayout>
             </LinearLayout>
             <!-- utorok -->
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/rounded_corners"
-                android:orientation="horizontal" >
+                style="@style/container"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/day_tuesday"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3"
+                        android:text="@string/day_tuesday" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/v_sauna_tuesday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3" />
                 </LinearLayout>
             </LinearLayout>
 
             <!-- streda -->
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/rounded_corners"
-                android:orientation="horizontal" >
+                style="@style/container"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/day_wednesday"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3"
+                        android:text="@string/day_wednesday" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/v_sauna_wednesday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3" />
                 </LinearLayout>
             </LinearLayout>
 
             <!-- stvrtok -->
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/rounded_corners"
-                android:orientation="horizontal" >
+                style="@style/container"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/day_thursday"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+
+                        style="@style/h3"
+                        android:text="@string/day_thursday" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/v_sauna_thursday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3" />
                 </LinearLayout>
             </LinearLayout>
 
             <!-- piatok -->
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/rounded_corners"
-                android:orientation="horizontal" >
+                style="@style/container"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/day_friday"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3"
+                        android:text="@string/day_friday" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/v_sauna_friday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3" />
                 </LinearLayout>
             </LinearLayout>
 
             <!-- sobota -->
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/rounded_corners"
-                android:orientation="horizontal" >
+                style="@style/container"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/day_saturday"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3"
+                        android:text="@string/day_saturday" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/v_sauna_saturday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/rounded_corners"
-                android:orientation="horizontal" >
+                style="@style/container"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/day_sunday"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3"
+                        android:text="@string/day_sunday" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1" >
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/v_sauna_sunday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        style="@style/h3" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -403,22 +264,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="8dp">
-
+                android:padding="8dp">
 
                 <Button
                     android:id="@+id/btn_page"
-                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
+                    style="@style/button_flat"
                     android:text="@string/sauna_check_online"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/colorAccent" />
             </LinearLayout>
 
         </RelativeLayout>
@@ -426,6 +278,4 @@
     </LinearLayout>
 
 
-
-
-</scolopax.sk.swimza.ui.ScrollingView >
+</scolopax.sk.swimza.ui.ScrollingView>

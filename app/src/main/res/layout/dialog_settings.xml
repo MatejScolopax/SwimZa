@@ -1,51 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
     android:minWidth="1000dp"
-    android:layout_marginLeft="10dp"
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
-        android:text="@string/about_text"
-        android:textColor="@color/darkgrey"
-        android:textSize="15sp" />
+        style="@style/h2"
+        android:text="@string/about_caption" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/label"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/about_version"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:text="@string/about_text" />
+
+    <TextView
+        style="@style/h2"
+        android:text="@string/about_version" />
 
     <TextView
         android:id="@+id/txt_settings_version"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
-        android:text="1.0.5"
-        android:textColor="@color/darkgrey"
-        android:textSize="15sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/label"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/settings_download"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        tools:text="1.0.5" />
+
+    <TextView
+        style="@style/h2"
+        android:text="@string/settings_download" />
 
     <RadioGroup
         android:layout_width="fill_parent"
@@ -56,39 +41,27 @@
 
         <RadioButton
             android:id="@+id/radio_auto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/h3"
             android:text="@string/settings_optAuto"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            style="@style/label"
+            android:layout_marginLeft="30dp"
             android:layout_marginRight="10dp"
-            android:text="@string/settings_optAutoText"
-            android:textColor="@color/darkgrey"
-            android:textSize="15sp" />
+            android:text="@string/settings_optAutoText" />
 
         <RadioButton
             android:id="@+id/radio_manual"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/h3"
             android:text="@string/settings_optManual"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            style="@style/label"
+            android:layout_marginLeft="30dp"
             android:layout_marginRight="10dp"
-            android:text="@string/settings_optManualText"
-            android:textColor="@color/darkgrey"
-            android:textSize="15sp" />
+            android:text="@string/settings_optManualText" />
     </RadioGroup>
 
 
@@ -101,22 +74,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:orientation="horizontal"
-            android:paddingBottom="8dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="8dp">
-
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn_ok"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="OK"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                style="@style/button_flat"
+                android:text="OK" />
         </LinearLayout>
 
     </RelativeLayout>
