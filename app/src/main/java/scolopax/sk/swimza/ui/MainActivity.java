@@ -36,7 +36,6 @@ public class MainActivity extends BaseActivity {
 
     private HomePagerAdapter pagerAdapter;
     private int toolbarHeight;
-    private int pageListViewVerticalScroll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

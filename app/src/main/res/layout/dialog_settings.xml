@@ -2,68 +2,75 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="20dp"
-    android:minWidth="1000dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        style="@style/h2"
-        android:text="@string/about_caption" />
-
-    <TextView
-        style="@style/label"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:text="@string/about_text" />
-
-    <TextView
-        style="@style/h2"
-        android:text="@string/about_version" />
-
-    <TextView
-        android:id="@+id/txt_settings_version"
-        style="@style/label"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        tools:text="1.0.5" />
-
-    <TextView
-        style="@style/h2"
-        android:text="@string/settings_download" />
-
-    <RadioGroup
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="12dp"
-        android:paddingRight="24dp">
+        android:layout_margin="20dp"
+        android:minWidth="1000dp"
+        android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/radio_auto"
-            style="@style/h3"
-            android:text="@string/settings_optAuto"
-            android:textColor="@color/colorPrimaryDark" />
+        <TextView
+            style="@style/h2"
+            android:text="@string/about_caption" />
 
         <TextView
             style="@style/label"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="@string/settings_optAutoText" />
-
-        <RadioButton
-            android:id="@+id/radio_manual"
-            style="@style/h3"
-            android:text="@string/settings_optManual"
-            android:textColor="@color/colorPrimaryDark" />
+            android:text="@string/about_text" />
 
         <TextView
-            style="@style/label"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="10dp"
-            android:text="@string/settings_optManualText" />
-    </RadioGroup>
+            style="@style/h2"
+            android:text="@string/about_version" />
 
+        <TextView
+            android:id="@+id/txt_settings_version"
+            style="@style/label"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            tools:text="1.0.5" />
+
+        <TextView
+            style="@style/h2"
+            android:text="@string/settings_download" />
+
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="12dp"
+            android:paddingTop="10dp"
+            android:paddingRight="24dp">
+
+            <RadioButton
+                android:id="@+id/radio_auto"
+                style="@style/h3"
+                android:text="@string/settings_optAuto"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                style="@style/label"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/settings_optAutoText" />
+
+            <RadioButton
+                android:id="@+id/radio_manual"
+                style="@style/h3"
+                android:text="@string/settings_optManual"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                style="@style/label"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/settings_optManualText" />
+        </RadioGroup>
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

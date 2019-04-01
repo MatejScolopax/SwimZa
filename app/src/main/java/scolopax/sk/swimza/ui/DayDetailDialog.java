@@ -3,9 +3,11 @@ package scolopax.sk.swimza.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.View;
 import android.widget.TextView;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import scolopax.sk.swimza.R;
 import scolopax.sk.swimza.data.DayObject;
 import scolopax.sk.swimza.ui.base.BaseDialog;
@@ -50,6 +52,17 @@ public class DayDetailDialog extends BaseDialog {
         txtDaySchedule.setText(dayObject.daytime);
         txtEveningSchedule.setText(dayObject.eveningTime);
         txtDayScheduleDetail.setText(spliToLines(dayObject.daySchedule));
+
+        if (dayObject.eveningTime!=null && dayObject.eveningTime.length()>0){
+            txtEveningSchedule.setVisibility(View.VISIBLE);
+        } else {
+            txtEveningSchedule.setVisibility(View.GONE);
+        }
+    }
+
+    @OnClick(R.id.btn_ok)
+    public void close() {
+        DayDetailDialog.this.dismiss();
     }
 
     private String spliToLines(String joined) {

@@ -51,7 +51,6 @@ public class SettingsDialog extends BaseDialog {
         try {
             PackageInfo pInfo = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0);
             txtVersion.setText(String.valueOf(pInfo.versionName));
-
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -89,5 +88,4 @@ public class SettingsDialog extends BaseDialog {
             editor.apply();
         }
     }
-
 }
