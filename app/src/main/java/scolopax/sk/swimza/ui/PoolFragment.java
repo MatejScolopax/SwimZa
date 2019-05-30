@@ -74,8 +74,9 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
 
         dayAdapter = new DayAdapter(new DayAdapter.DayAdapterOnClickHandler() {
             @Override
-            public void onClick(Long id, DayObject dayObject) {
-                new DayDetailDialog(getContext(), dayObject);
+            public void onClick(Long id, DayObject dayObject, View sharedTransitionView) {
+
+              //  new DayDetailDialog(getContext(), dayObject);
             }
         }, getContext());
 

@@ -13,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.ScrollView;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import butterknife.BindView;
 import butterknife.OnCheckedChanged;
@@ -36,23 +38,26 @@ public class SaunaFragment extends ScrollingFragment {
     private static final int GENDER_MIX = 2;
     private int defaultGender = 2;
 
+    @BindView(R.id.v_sauna_monday)
+    TextSwitcher txtMonday;
+
     @BindView(R.id.v_sauna_tuesday)
-    TextView txtTuesday;
+    TextSwitcher txtTuesday;
 
     @BindView(R.id.v_sauna_wednesday)
-    TextView txtWednesday;
+    TextSwitcher txtWednesday;
 
     @BindView(R.id.v_sauna_thursday)
-    TextView txtThursday;
+    TextSwitcher txtThursday;
 
     @BindView(R.id.v_sauna_friday)
-    TextView txtFriday;
+    TextSwitcher txtFriday;
 
     @BindView(R.id.v_sauna_saturday)
-    TextView txtSaturday;
+    TextSwitcher txtSaturday;
 
     @BindView(R.id.v_sauna_sunday)
-    TextView txtSunday;
+    TextSwitcher txtSunday;
 
     @BindView(R.id.scrollView_sauna)
     ScrollingView scrollView;
@@ -85,6 +90,7 @@ public class SaunaFragment extends ScrollingFragment {
         return inflater.inflate(R.layout.fragment_sauna, container, false);
     }
 
+
     @OnClick(R.id.btn_page)
     public void openSaunaProgram() {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Cons.URL_SAUNA)));
@@ -93,35 +99,41 @@ public class SaunaFragment extends ScrollingFragment {
 
     @OnCheckedChanged(R.id.radio_men)
     public void setMen() {
-        defaultGender = GENDER_MAN;
-        txtTuesday.setText("");
-        txtWednesday.setText(getContext().getString(R.string.sauna_week2));
-        txtThursday.setText(getContext().getString(R.string.sauna_week1));
-        txtFriday.setText(getContext().getString(R.string.sauna_week2));
-        txtSaturday.setText("");
-        txtSunday.setText("");
+        if (rbtnM.isChecked()) {
+            defaultGender = GENDER_MAN;
+            txtTuesday.setText("");
+            txtWednesday.setText(getContext().getString(R.string.sauna_week2));
+            txtThursday.setText(getContext().getString(R.string.sauna_week1));
+            txtFriday.setText(getContext().getString(R.string.sauna_week2));
+            txtSaturday.setText("");
+            txtSunday.setText("");
+        }
     }
 
     @OnCheckedChanged(R.id.radio_women)
     public void setWomen() {
-        defaultGender = GENDER_WOMAN;
-        txtTuesday.setText(getContext().getString(R.string.sauna_week2));
-        txtWednesday.setText(getContext().getString(R.string.sauna_week1));
-        txtThursday.setText(getContext().getString(R.string.sauna_week2));
-        txtFriday.setText("");
-        txtSaturday.setText("");
-        txtSunday.setText("");
+        if (rbtnW.isChecked()) {
+            defaultGender = GENDER_WOMAN;
+            txtTuesday.setText(getContext().getString(R.string.sauna_week2));
+            txtWednesday.setText(getContext().getString(R.string.sauna_week1));
+            txtThursday.setText(getContext().getString(R.string.sauna_week2));
+            txtFriday.setText("");
+            txtSaturday.setText("");
+            txtSunday.setText("");
+        }
     }
 
     @OnCheckedChanged(R.id.radio_together)
     public void setTogether() {
-        defaultGender = GENDER_MIX;
-        txtTuesday.setText(getContext().getString(R.string.sauna_week1));
-        txtWednesday.setText("");
-        txtThursday.setText("");
-        txtFriday.setText(getContext().getString(R.string.sauna_week1));
-        txtSaturday.setText(getContext().getString(R.string.sauna_weekend1) + "\n" + getContext().getString(R.string.sauna_weekend2));
-        txtSunday.setText(getContext().getString(R.string.sauna_weekend3));
+        if (rbtnT.isChecked()) {
+            defaultGender = GENDER_MIX;
+            txtTuesday.setText(getContext().getString(R.string.sauna_week1));
+            txtWednesday.setText("");
+            txtThursday.setText("");
+            txtFriday.setText(getContext().getString(R.string.sauna_week1));
+            txtSaturday.setText(getContext().getString(R.string.sauna_weekend1) + "\n" + getContext().getString(R.string.sauna_weekend2));
+            txtSunday.setText(getContext().getString(R.string.sauna_weekend3));
+        }
     }
 
     @Override
@@ -131,6 +143,15 @@ public class SaunaFragment extends ScrollingFragment {
 
         SharedPreferences settings = getContext().getSharedPreferences(SHARED_PREF_GENDER, Context.MODE_PRIVATE);
         defaultGender = settings.getInt(SHARED_GENDER, defaultGender);
+
+        initTextSwitcher(txtMonday);
+        initTextSwitcher(txtTuesday);
+        initTextSwitcher(txtWednesday);
+        initTextSwitcher(txtThursday);
+        initTextSwitcher(txtFriday);
+        initTextSwitcher(txtSaturday);
+        initTextSwitcher(txtSunday);
+
 
         if (defaultGender == GENDER_MAN) {
             rbtnM.setChecked(true);
@@ -143,6 +164,16 @@ public class SaunaFragment extends ScrollingFragment {
             rbtnT.setChecked(true);
         }
     }
+
+    private void initTextSwitcher(TextSwitcher ts) {
+        ts.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                return new TextView(getContext());
+            }
+        });
+    }
+
 
     @Override
     public void onPause() {

@@ -6,7 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import scolopax.sk.swimza.R;
 import scolopax.sk.swimza.data.DatabaseContract;
@@ -34,6 +36,10 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
         this.context = context;
     }
 
+    public interface DayAdapterOnClickHandler {
+        void onClick(Long id, DayObject dayObject, View sharedTransitionView);
+    }
+
     @Override
     public int getItemViewType(int position) {
         return (position == 0 ? VIEW_TYPE_SPACER : VIEW_TYPE_DAY);
@@ -45,9 +51,6 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
         return new DayObject(cursor);
     }
 
-    public interface DayAdapterOnClickHandler {
-        void onClick(Long id, DayObject dayObject);
-    }
 
     @Override
     public DayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -101,17 +104,27 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
 
     public class DayViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public final TextView txtDate, txtDayName, txtDaySchedule, txtDayScheduleDetail, txtEveningSchedule;
+        public final TextView txtDate, txtDayName, txtDaySchedule, txtEveningSchedule;
         public final View container;
+        public final TextSwitcher txtDayScheduleDetail;
+        public boolean isExtended = false;
 
         public DayViewHolder(View view) {
             super(view);
             container = view.findViewById(R.id.container);
-            txtDate =  view.findViewById(R.id.lv_day_date);
+            txtDate = view.findViewById(R.id.lv_day_date);
             txtDayName = view.findViewById(R.id.lv_day_dateText);
             txtDaySchedule = view.findViewById(R.id.lv_day_daySchedule);
             txtDayScheduleDetail = view.findViewById(R.id.lv_view_day_daySchedule_details);
             txtEveningSchedule = view.findViewById(R.id.lv_day_eveningSchedule);
+
+            txtDayScheduleDetail.setFactory(new ViewSwitcher.ViewFactory() {
+                @Override
+                public View makeView() {
+                    return new TextView(context);
+                }
+            });
+
             view.setOnClickListener(this);
         }
 
@@ -120,7 +133,19 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
             int adapterPosition = getAdapterPosition();
             cursor.moveToPosition(adapterPosition);
             int idColumn = cursor.getColumnIndex(DatabaseContract.TableDay.COL_DAY_DATE);
-            clickHandler.onClick(cursor.getLong(idColumn), getItem(adapterPosition));
+
+            DayObject a = getItem(adapterPosition);
+
+            isExtended = !isExtended;
+            if (isExtended){
+                txtDayScheduleDetail.setText(spliToLines(a.daySchedule));
+
+            } else {
+                txtDayScheduleDetail.setText(a.daySchedule);
+                notifyItemChanged(adapterPosition);
+            }
+
+            clickHandler.onClick(cursor.getLong(idColumn), getItem(adapterPosition),container);
         }
     }
 
@@ -128,4 +153,30 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
         cursor = newCursor;
         notifyDataSetChanged();
     }
+
+
+    private String spliToLines(String joined) {
+        try {
+            String delimeter = "\\d{2}.\\d{2}-"; // "08.00-"
+
+            String[] parts = joined.split("(?=" + delimeter + ")");   //This uses look-arounds to split on empty string just before the delimiter.
+
+            StringBuilder sb = new StringBuilder();
+
+            for (String part : parts) {
+                if (part.length() > 0 && !part.equals("\n")) // do not insert "empty" row
+                    sb.append(part).append("\n");
+            }
+
+            if (sb.length() > 1) // last line separatr remove
+                sb.setLength(sb.length() - 1);
+
+            return sb.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return joined;
+        }
+    }
+
+
 }

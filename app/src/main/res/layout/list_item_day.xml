@@ -53,14 +53,15 @@
                 android:layout_marginRight="10dp"
                 tools:text="6:00-17:00" />
 
-            <TextView
+            <TextSwitcher
                 android:id="@+id/lv_view_day_daySchedule_details"
                 style="@style/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
+                android:inAnimation="@android:anim/slide_in_left"
                 android:orientation="vertical"
-                tools:text="(09.00-10.30 6 dr.,15.00-17.00 7 dr.,17.00-18.00 6 dr.,)" />
+                android:outAnimation="@android:anim/slide_out_right" />
 
             <TextView
                 android:id="@+id/lv_day_eveningSchedule"
