@@ -7,8 +7,8 @@ package scolopax.sk.swimza.data;
 
 public class Cons {
 
-    static final String URL = "http://www.plavarenzilina.sk/program/";
+    static final String URL = "https://www.plavarenzilina.sk/program/";
 
-    public static final String URL_SAUNA = "http://www.plavarenzilina.sk/sauna/";
+    public static final String URL_SAUNA = "https://www.plavarenzilina.sk/sauna/";
 
 }
