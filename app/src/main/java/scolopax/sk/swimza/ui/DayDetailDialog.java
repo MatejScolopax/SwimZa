@@ -2,7 +2,7 @@ package scolopax.sk.swimza.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 
@@ -61,7 +61,7 @@ public class DayDetailDialog extends BaseDialog {
     }
 
     @OnClick(R.id.btn_ok)
-    public void close() {
+    void close() {
         DayDetailDialog.this.dismiss();
     }
 

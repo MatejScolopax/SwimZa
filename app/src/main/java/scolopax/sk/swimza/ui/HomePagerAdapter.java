@@ -2,10 +2,10 @@ package scolopax.sk.swimza.ui;
 
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 
 import scolopax.sk.swimza.R;
@@ -28,7 +28,7 @@ final class HomePagerAdapter extends FragmentPagerAdapter implements ScrollingFr
 
 	private Context context;
 
-	public HomePagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Context context, View toolBarLayout,  ViewPager viewPager) {
+	HomePagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Context context, View toolBarLayout,  ViewPager viewPager) {
 		super(fragmentManager);
 		this.context = context;
 		this.toolBarLayout = toolBarLayout;

@@ -4,14 +4,14 @@ package scolopax.sk.swimza.ui;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,12 +72,9 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
         RecyclerView.LayoutManager cardLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(cardLayoutManager);
 
-        dayAdapter = new DayAdapter(new DayAdapter.DayAdapterOnClickHandler() {
-            @Override
-            public void onClick(Long id, DayObject dayObject, View sharedTransitionView) {
+        dayAdapter = new DayAdapter((id, dayObject, sharedTransitionView) -> {
 
-              //  new DayDetailDialog(getContext(), dayObject);
-            }
+          //  new DayDetailDialog(getContext(), dayObject);
         }, getContext());
 
         recyclerView.setAdapter(dayAdapter);
@@ -100,16 +97,13 @@ public class PoolFragment extends ScrollingFragment implements LoaderManager.Loa
 
         swipeContainer.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorAccent, R.color.colorPrimaryDark);
         swipeContainer.setProgressViewOffset(true, 0, toolbarHeight * 2 + (toolbarHeight / 10));
-        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
+        swipeContainer.setOnRefreshListener(() -> {
 
-                if (ConnectUtils.isConnected(getActivity())) {
-                    new DownloadTask(getActivity()).execute();
-                } else {
-                    swipeContainer.setRefreshing(false);
-                    Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.state_connection), Toast.LENGTH_SHORT).show();
-                }
+            if (ConnectUtils.isConnected(getActivity())) {
+                new DownloadTask(getActivity()).execute();
+            } else {
+                swipeContainer.setRefreshing(false);
+                Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.state_connection), Toast.LENGTH_SHORT).show();
             }
         });
 
