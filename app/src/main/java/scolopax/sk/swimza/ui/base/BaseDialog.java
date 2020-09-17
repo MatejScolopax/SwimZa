@@ -1,8 +1,8 @@
 package scolopax.sk.swimza.ui.base;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatDialog;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDialog;
 
 import butterknife.ButterKnife;
 

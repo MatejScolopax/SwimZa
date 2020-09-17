@@ -32,10 +32,10 @@
     <string name="sauna_women">Women</string>
     <string name="sauna_men">Men</string>
     <string name="sauna_together">Mixed</string>
-    <string name="sauna_week1">I.  Zone 12:00-15:30</string>
-    <string name="sauna_week2">II. Zone 16:00-20:00</string>
-    <string name="sauna_weekend1">I.  Zone 11:00-14:30</string>
-    <string name="sauna_weekend2">II. Zone 15:00-18:00</string>
+    <string name="sauna_week1">I.  Zone 11:00-15:00</string>
+    <string name="sauna_week2">II. Zone 15:30-20:30</string>
+    <string name="sauna_weekend1">I.  Zone 10:30-14:30</string>
+    <string name="sauna_weekend2">II. Zone 15:00-20:00</string>
     <string name="sauna_weekend3">II. Zone 09:00-20:00</string>
     <string name="sauna_check_online">Check schedule online</string>
 

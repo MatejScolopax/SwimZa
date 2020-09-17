@@ -68,8 +68,18 @@
                 style="@style/h2"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
                 tools:text="18:00-20:30 vecerne plavainie" />
+
+            <TextView
+                android:id="@+id/lv_day_eveningSchedule_details"
+                style="@style/label"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                tools:text="VEČERNÉ PLÁVANIE (18.00-19.00 7DR.,)" />
+
         </LinearLayout>
     </LinearLayout>
 

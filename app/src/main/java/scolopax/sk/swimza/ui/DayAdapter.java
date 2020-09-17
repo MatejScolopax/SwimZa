@@ -2,7 +2,7 @@ package scolopax.sk.swimza.ui;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +51,6 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
         return new DayObject(cursor);
     }
 
-
     @Override
     public DayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (parent instanceof RecyclerView) {
@@ -94,6 +93,13 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
         } else {
             holder.txtEveningSchedule.setVisibility(View.GONE);
         }
+
+        if (day.eveningSchedule != null && day.eveningSchedule.length() > 0) {
+            holder.txtEveningScheduleDetail.setText(day.eveningSchedule);
+            holder.txtEveningScheduleDetail.setVisibility(View.VISIBLE);
+        } else {
+            holder.txtEveningScheduleDetail.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -104,7 +110,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
 
     public class DayViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public final TextView txtDate, txtDayName, txtDaySchedule, txtEveningSchedule;
+        public final TextView txtDate, txtDayName, txtDaySchedule, txtEveningSchedule, txtEveningScheduleDetail;
         public final View container;
         public final TextSwitcher txtDayScheduleDetail;
         public boolean isExtended = false;
@@ -117,6 +123,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
             txtDaySchedule = view.findViewById(R.id.lv_day_daySchedule);
             txtDayScheduleDetail = view.findViewById(R.id.lv_view_day_daySchedule_details);
             txtEveningSchedule = view.findViewById(R.id.lv_day_eveningSchedule);
+            txtEveningScheduleDetail = view.findViewById(R.id.lv_day_eveningSchedule_details);
 
             txtDayScheduleDetail.setFactory(new ViewSwitcher.ViewFactory() {
                 @Override
@@ -177,6 +184,4 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
             return joined;
         }
     }
-
-
 }

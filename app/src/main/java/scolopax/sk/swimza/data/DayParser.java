@@ -24,71 +24,41 @@ public class DayParser {
         List<DayObject> dayList = new ArrayList<>();
         Document doc = Jsoup.connect(url.toString()).get();
 
-        Element table = doc.select("table").first();
-        Elements trs = table.select("tr");
+        Element table = doc.select("body").first();
 
-        for (int i = 1; i < trs.size(); i++) {
-            Elements tds = trs.get(i).select("td");
+        Elements div = table.select("div.milenia-grid-item");
 
-            SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH);
-            Date result = df.parse(tds.get(0).text());
-            dayList.add(parseDay(tds.get(1).text(), result));
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH);
+
+        for (int i = 0; i < div.size(); i++) {
+            try {
+
+                Elements datePart1 = div.get(i).select("div.milenia-entity-date-date");
+                Elements datePart2 = div.get(i).select("div.milenia-entity-date-month-year");
+
+                String a = datePart1.get(0).text();
+                String b = datePart2.get(0).text();
+                String dateString = a.replaceAll("\\u00A0", "") + b.replaceAll("\\u00A0", "");
+
+                Elements scheduleElement = div.get(i).select("a");
+                String daySchedule = scheduleElement.get(0).text();
+                String eveningScheudle= "";
+                if (scheduleElement.size() == 2){
+                    eveningScheudle = scheduleElement.get(1).text();
+                }
+
+                Elements timeElement = div.get(i).select("h2");
+                String dayTime = timeElement.get(0).text();
+                String eveningTime = "";
+                if (timeElement.size()==2){
+                    eveningTime = timeElement.get(1).text();
+                }
+
+                dayList.add(new DayObject(df.parse(dateString), dayTime, eveningTime , daySchedule, eveningScheudle));
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
-
         return dayList;
     }
-
-    private static DayObject parseDay(String dayString, Date date) {
-        DayObject o_day;
-
-        String part1 = null, part2 = null, part3 = null;
-
-        String[] parts = dayString.split("\\(");
-        String[] parts2;
-        if (parts.length > 1) {
-            part1 = parts[0];
-            part2 = parts[1];
-
-            parts2 = part2.split("\\)");
-            if (parts2.length > 1) {
-                part2 = parts2[0];
-                part3 = parts2[1];
-                o_day = new DayObject(date, trimFromEmpty(part1), trimFromEmpty(part3), trimFromEmpty(part2));
-            } else {
-                part3 = part2.substring(0, part2.length() - 1);
-                o_day = new DayObject(date, trimFromEmpty(part1), "", trimFromEmpty(part3));
-            }
-
-        } else {
-            o_day = new DayObject(date, trimFromEmpty(dayString), "", null);
-        }
-        return o_day;
-    }
-
-    public static ArrayList<String> parseSchedule(String part2) {
-        if (part2.equals(""))
-            return null;
-        String[] parts = part2.split("\\,");
-
-        ArrayList<String> arrayList = new ArrayList<>();
-
-        for (String s : parts) {
-            arrayList.add(s);
-        }
-        return arrayList;
-    }
-
-    private static String trimFromEmpty(String str) {
-
-        if (str.length() > 0 && str.charAt(0) == ' ') {
-            str = str.substring(1, str.length());
-        }
-
-        if (str.length() > 0 && str.charAt(str.length() - 1) == ' ') {
-            str = str.substring(0, str.length() - 1);
-        }
-
-        return str;
-    }
-
 }

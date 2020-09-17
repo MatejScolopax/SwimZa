@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SwimZa.iml" filepath="$PROJECT_DIR$/SwimZa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SwimZa-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SwimZa-app.iml" group="SwimZa/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/workspace_AndroidStudio-SwimZa.iml" filepath="$PROJECT_DIR$/.idea/modules/workspace_AndroidStudio-SwimZa.iml" group="SwimZa" />
     </modules>
   </component>
 </project>

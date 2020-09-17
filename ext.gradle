@@ -1,15 +1,15 @@
 // build
-ext.SdkVersionMin = 14
-ext.SdkVersionTarget = 28
-ext.SdkVersionCompile = 28
+ext.SdkVersionMin = 24
+ext.SdkVersionTarget = 29
+ext.SdkVersionCompile = 29
 ext.applicationId = 'sk.plavaren.swim'
 
 // app version
-ext.versionName = '2.0.4'
-ext.versionCode = 16
+ext.versionName = '2.1.0'
+ext.versionCode = 18
 
 // dependencies
 ext.support = '28.0.0'
-ext.butterknife = '8.8.1'
+ext.butterknife = '10.0.0'
 ext.jsoup ='1.7.2'
 ext.constraint='1.1.0'

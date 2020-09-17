@@ -14,7 +14,7 @@ public class SwimDBHelper extends SQLiteOpenHelper {
     private static final String TAG = SwimDBHelper.class.getSimpleName();
 
     public static final String DB_NAME = "customers.db";
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 2;
     private Resources resources;
 
     private static final String SQL_CREATE_TABLE_DAY=
@@ -22,7 +22,9 @@ public class SwimDBHelper extends SQLiteOpenHelper {
                     + DatabaseContract.TableDay.COL_DAY_DATE + " TIMESTAMP PRIMARY KEY, "
                     + DatabaseContract.TableDay.COL_DAY_DAYTIME 	+ " VARCHAR NULL, "
                     + DatabaseContract.TableDay.COL_DAY_EVENINGTIME + " VARCHAR NULL, "
-                    + DatabaseContract.TableDay.COL_DAY_DAYSCHEDULE + " VARCHAR NULL " + ")";
+                    + DatabaseContract.TableDay.COL_DAY_DAYSCHEDULE + " VARCHAR NULL, "
+                    + DatabaseContract.TableDay.COL_DAY_EVENINGSCHEDULE + " VARCHAR NULL "
+                    + ")";
 
     public SwimDBHelper(Context context)
     {

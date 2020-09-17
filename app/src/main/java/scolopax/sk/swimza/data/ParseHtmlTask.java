@@ -43,7 +43,6 @@ public abstract class ParseHtmlTask extends AsyncTask<Void, Void, Boolean> {
 
             ContentValues[] valuesArr = new ContentValues[result.size()];
 
-
             int i = 0;
             for (DayObject d : result) {
                 final ContentValues values = new ContentValues();
@@ -51,6 +50,7 @@ public abstract class ParseHtmlTask extends AsyncTask<Void, Void, Boolean> {
                 values.put(DatabaseContract.TableDay.COL_DAY_DAYTIME, d.daytime);
                 values.put(DatabaseContract.TableDay.COL_DAY_EVENINGTIME, d.eveningTime);
                 values.put(DatabaseContract.TableDay.COL_DAY_DAYSCHEDULE, d.daySchedule);
+                values.put(DatabaseContract.TableDay.COL_DAY_EVENINGSCHEDULE, d.eveningSchedule);
                 valuesArr[i++] = values;
             }
 

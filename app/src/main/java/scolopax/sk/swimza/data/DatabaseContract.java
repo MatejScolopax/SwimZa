@@ -24,11 +24,14 @@ public class DatabaseContract {
         public static final String COL_DAY_DAYTIME = "day_daytime";
         public static final String COL_DAY_EVENINGTIME = "day_eveningtime";
         public static final String COL_DAY_DAYSCHEDULE = "day_dayschedule";
+        public static final String COL_DAY_EVENINGSCHEDULE = "day_eveningschedule";
+
 
         public static final int COL_IDX_DATE = 0;
         public static final int COL_IDX_DAYTIME= 1;
         public static final int COL_IDX_EVENINGTIME = 2;
         public static final int COL_IDX_DAYSCHEDULE = 3;
+        public static final int COL_IDX_EVENINGSCHEDULE = 4;
 
         public static final Uri CONTENT_URI = new Uri.Builder().scheme("content")
                 .authority(CONTENT_AUTHORITY_DAY)
@@ -41,7 +44,7 @@ public class DatabaseContract {
 
         public static String[] getProjection()
         {
-            return new String[] { TableDay.COL_DAY_DATE, TableDay.COL_DAY_DAYTIME, TableDay.COL_DAY_EVENINGTIME, TableDay.COL_DAY_DAYSCHEDULE };
+            return new String[] { TableDay.COL_DAY_DATE, TableDay.COL_DAY_DAYTIME, TableDay.COL_DAY_EVENINGTIME, TableDay.COL_DAY_DAYSCHEDULE, TableDay.COL_DAY_EVENINGSCHEDULE };
         }
     }
 
